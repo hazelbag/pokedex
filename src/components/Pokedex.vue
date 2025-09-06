@@ -17,7 +17,7 @@
           placeholder="Search Pokémon..."
           class="search-input"
           @input="handleSearch"
-        />
+        >
       </div>
     </div>
 
@@ -29,22 +29,40 @@
       </div>
     </div>
 
-    <div v-if="loading" class="text-center">
-      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-      <p class="text-white mt-4">Loading Pokémon...</p>
+    <div
+      v-if="loading"
+      class="text-center"
+    >
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white" />
+      <p class="text-white mt-4">
+        Loading Pokémon...
+      </p>
     </div>
 
-    <div v-else-if="error" class="text-center">
+    <div
+      v-else-if="error"
+      class="text-center"
+    >
       <div class="bg-red-500 text-white p-4 rounded-lg max-w-md mx-auto">
-        <p class="font-semibold">Error loading Pokémon</p>
-        <p class="text-sm mt-2">{{ error }}</p>
-        <button @click="loadInitialPokemon" class="mt-4 bg-white text-red-500 px-4 py-2 rounded font-semibold">
+        <p class="font-semibold">
+          Error loading Pokémon
+        </p>
+        <p class="text-sm mt-2">
+          {{ error }}
+        </p>
+        <button
+          class="mt-4 bg-white text-red-500 px-4 py-2 rounded font-semibold"
+          @click="loadInitialPokemon"
+        >
           Try Again
         </button>
       </div>
     </div>
 
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div
+      v-else
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+    >
       <PokemonCard
         v-for="poke in pokemon"
         :key="poke.id"
@@ -53,11 +71,14 @@
       />
     </div>
 
-    <div v-if="!isSearching && !loading && hasMore" class="text-center mt-8">
+    <div
+      v-if="!isSearching && !loading && hasMore"
+      class="text-center mt-8"
+    >
       <button
-        @click="loadMorePokemon"
         :disabled="loadingMore"
         class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        @click="loadMorePokemon"
       >
         {{ loadingMore ? 'Loading...' : 'Load More Pokémon' }}
       </button>

@@ -1,26 +1,41 @@
 <template>
   <div class="max-w-4xl mx-auto">
     <button
-      @click="$router.back()"
       class="mb-6 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors flex items-center space-x-2"
+      @click="$router.back()"
     >
       <span>←</span>
       <span>Back to Pokédex</span>
     </button>
 
-    <div v-if="loading" class="text-center">
-      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-      <p class="text-white mt-4">Loading Pokémon details...</p>
+    <div
+      v-if="loading"
+      class="text-center"
+    >
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white" />
+      <p class="text-white mt-4">
+        Loading Pokémon details...
+      </p>
     </div>
 
-    <div v-else-if="error" class="text-center">
+    <div
+      v-else-if="error"
+      class="text-center"
+    >
       <div class="bg-red-500 text-white p-4 rounded-lg max-w-md mx-auto">
-        <p class="font-semibold">Error loading Pokémon details</p>
-        <p class="text-sm mt-2">{{ error }}</p>
+        <p class="font-semibold">
+          Error loading Pokémon details
+        </p>
+        <p class="text-sm mt-2">
+          {{ error }}
+        </p>
       </div>
     </div>
 
-    <div v-else-if="pokemon" class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <div
+      v-else-if="pokemon"
+      class="bg-white rounded-2xl shadow-2xl overflow-hidden"
+    >
       <div class="bg-gradient-to-r from-purple-400 to-pink-400 p-8 text-center text-white relative">
         <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
           <span class="font-bold text-lg">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
@@ -30,9 +45,11 @@
           :src="pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default"
           :alt="pokemon.name"
           class="w-48 h-48 mx-auto object-contain drop-shadow-2xl"
-        />
+        >
         
-        <h1 class="text-4xl font-bold capitalize mt-6 mb-4">{{ pokemon.name }}</h1>
+        <h1 class="text-4xl font-bold capitalize mt-6 mb-4">
+          {{ pokemon.name }}
+        </h1>
         
         <div class="flex justify-center space-x-3">
           <span
@@ -50,7 +67,9 @@
         <div class="grid md:grid-cols-2 gap-8">
           <div class="space-y-6">
             <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-4">Physical Characteristics</h3>
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Physical Characteristics
+              </h3>
               <div class="bg-gray-50 rounded-lg p-4 space-y-3">
                 <div class="flex justify-between">
                   <span class="font-semibold text-gray-600">Height:</span>
@@ -64,7 +83,9 @@
             </div>
 
             <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-4">Abilities</h3>
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Abilities
+              </h3>
               <div class="space-y-2">
                 <div
                   v-for="ability in pokemon.abilities"
@@ -74,7 +95,10 @@
                   <span class="capitalize font-semibold text-blue-800">
                     {{ ability.ability.name.replace('-', ' ') }}
                   </span>
-                  <span v-if="ability.is_hidden" class="text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded">
+                  <span
+                    v-if="ability.is_hidden"
+                    class="text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded"
+                  >
                     Hidden
                   </span>
                 </div>
@@ -83,7 +107,9 @@
           </div>
 
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Base Stats</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              Base Stats
+            </h3>
             <div class="space-y-4">
               <div
                 v-for="stat in pokemon.stats"
@@ -100,7 +126,7 @@
                   <div
                     class="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all duration-300"
                     :style="{ width: `${Math.min((stat.base_stat / 255) * 100, 100)}%` }"
-                  ></div>
+                  />
                 </div>
               </div>
             </div>

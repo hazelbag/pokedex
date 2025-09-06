@@ -1,5 +1,8 @@
 <template>
-  <div class="pokemon-card" @click="$emit('click', pokemon)">
+  <div
+    class="pokemon-card"
+    @click="$emit('click', pokemon)"
+  >
     <div class="text-center">
       <div class="relative">
         <img
@@ -7,7 +10,7 @@
           :alt="pokemon.name"
           class="w-32 h-32 mx-auto object-contain"
           @error="handleImageError"
-        />
+        >
         <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 px-2 py-1 rounded-bl-lg text-sm font-bold">
           #{{ pokemon.id.toString().padStart(3, '0') }}
         </div>
@@ -31,12 +34,12 @@
       <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
         <div>
           <span class="font-semibold">Height:</span>
-          <br />
+          <br>
           {{ (pokemon.height / 10).toFixed(1) }}m
         </div>
         <div>
           <span class="font-semibold">Weight:</span>
-          <br />
+          <br>
           {{ (pokemon.weight / 10).toFixed(1) }}kg
         </div>
       </div>
