@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@layer components {
+  .pokemon-card {
+    @apply bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer transform hover:-translate-y-1;
+  }
+  
+  .pokemon-type {
+    @apply px-3 py-1 rounded-full text-white text-sm font-semibold uppercase tracking-wide;
+  }
+  
+  .search-input {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none text-lg;
+  }
+}
