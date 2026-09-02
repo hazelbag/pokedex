@@ -5,6 +5,10 @@ const BASE_URL = 'https://pokeapi.co/api/v2'
 
 export class PokemonService {
   private static instance: PokemonService
+  // One cache serves several response shapes (PokemonListResponse from
+  // getPokemonList, Pokemon from getPokemon), and each caller already knows
+  // which it expects. `unknown` would just move the cast to every read site.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private cache = new Map<string, any>()
 
   public static getInstance(): PokemonService {
